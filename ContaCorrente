@@ -1,0 +1,71 @@
+public class ContaCorrente {
+    int numeroConta;
+    float saldo;
+    boolean Especial;
+    double limiteEspecial;
+
+    String obterSaldo(){
+        System.out.println("Saldo - R$ " + saldo + " reais");
+        return null;
+    }
+    public void depositar(float valor) {
+        if (valor > 0);
+        saldo += valor;
+    }
+    public boolean sacar(float valor){
+        if (saldo >= valor) {
+            saldo -= valor;
+            return true;
+        } else {
+            if (Especial) {
+                double limite = limiteEspecial + saldo;
+                if (limite >= valor);
+                saldo -= valor;
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+    public boolean verificarEspecial() {
+        return saldo < 0;
+    }
+
+}
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+public class TesteContaCorrente {
+    public static void main(String[] args) {
+    ContaCorrente conta = new ContaCorrente();
+    conta.numeroConta = 123456;
+    conta.saldo = 200.0f;
+    conta.Especial = true ;
+    conta.limiteEspecial = 100.0;
+    conta.sacar(100);
+    conta.limiteEspecial = 20.0f;
+    conta.sacar(120);
+        System.out.println("Numero da conta: " + conta.numeroConta);
+        System.out.println("Limite especial - R$ " + conta.limiteEspecial);
+        System.out.println("Seu saldo atual é de : " + conta.saldo + " reais ");
+
+        conta.depositar(500.0f);
+        conta.sacar(200.0f);
+        conta.verificarEspecial();
+
+
+        System.out.println("Numero da conta: " + conta.numeroConta);
+        System.out.println("Limite especial - R$ " + conta.limiteEspecial);
+        System.out.println("Seu saldo atual é de : " + conta.saldo + " reais ");
+        System.out.println("Especial - " + conta.Especial);
+
+        conta.obterSaldo();
+    }
+}
